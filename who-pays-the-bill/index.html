@@ -27,6 +27,13 @@
         <input type="text" v-model.trim="data.inputName"/>
         <button @click="addNameToList">Add</button>
       </div>
+
+      <div
+        class="error_label animate__animated animate__fadeInDown"
+        v-if="data.showError"  
+      >
+        {{ data.error }}
+      </div>
       
       <div class="list_of_names">
         <div
@@ -38,10 +45,36 @@
           {{ name }}
         </div>
       </div>
+
+      <div
+        v-if="isReady"
+        class="animate__animated animate__bounceIn"
+      >
+        <div class="action_button" @click="showResults">
+          Check the loser
+        </div>
+      </div>
     </div>
 
     <div id="results" class="container" v-if="!data.state">
-      aaa
+      <div class="result_container">
+        <h1>The loser is:</h1>
+        <div class="result_value">
+          {{ data.result }}
+        </div>
+
+        <div class="action_button"
+          @click="resetApp"
+        >
+          Start over
+        </div>
+        <br/>
+        <div class="action_button btn2"
+          @click="getNewResult"
+        >
+          Get a new name
+        </div>
+      </div>
     </div>
 
   </div> 
