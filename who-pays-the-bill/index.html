@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Who pays the bill?</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div id="names" class="container" v-if="data.state">
+      <div class="logo">
+        <h1>Who pays the bill?</h1>
+      </div>
+      
+      <div class="input_container">
+        <input type="text" v-model.trim="data.inputName"/>
+        <button @click="addNameToList">Add</button>
+      </div>
+      
+      <div class="list_of_names">
+        <div
+          v-for="(name, index) in data.names"
+          :key="name"
+          @click="removeName(index)"
+          class="animate__animated animate__fadeIn"
+        >
+          {{ name }}
+        </div>
+      </div>
+    </div>
+
+    <div id="results" class="container" v-if="!data.state">
+      aaa
+    </div>
+
+  </div> 
+</body>
+<script src="js/app.js"></script>
+</html>
